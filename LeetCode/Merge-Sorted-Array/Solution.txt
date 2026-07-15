@@ -1,0 +1,45 @@
+1class Solution {
+2public:
+3    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+4       /* 
+5       // BRUTE FORCE
+6        int count=0;
+7        for(int i=m;i<(m+n);i++){
+8            nums1[i]=nums2[count];
+9            count++;
+10        }
+11
+12        for(int i=0;i<(m+n);i++){
+13
+14            for(int j=0;j<(m+n)-i-1;j++){
+15                if(nums1[j]>nums1[j+1]){
+16                   int t=nums1[j];
+17                   nums1[j]=nums1[j+1];
+18                   nums1[j+1]=t;
+19                }
+20            }
+21        }
+22        */
+23
+24    //optimised solution used two ponter to solve
+25    int i = m - 1;
+26    int j = n - 1;
+27    int k = m + n - 1;
+28
+29    while(i >= 0 && j >= 0) {
+30        if(nums1[i] > nums2[j]) {
+31            nums1[k--] = nums1[i--];
+32        } else {
+33            nums1[k--] = nums2[j--];
+34        }
+35    }
+36
+37    while(j >= 0) {
+38        nums1[k--] = nums2[j--];
+39    }
+40
+41
+42
+43
+44    }
+45};
